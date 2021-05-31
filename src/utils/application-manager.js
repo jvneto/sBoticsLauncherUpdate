@@ -1,4 +1,5 @@
 var { app, ipcRenderer } = require('electron');
+const remote = require('electron').remote;
 
 const SLMP = () => {
   try {

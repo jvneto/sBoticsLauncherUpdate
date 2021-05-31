@@ -2,6 +2,9 @@ var extend = require('extend-shallow');
 const axios = require('axios').default;
 import { Email, Password } from '../utils/validate-data.js';
 import { CreateTopAlert } from '../utils/top-alert.js';
+import { CreateUserFile, OpenUserFile } from '../class/__file_user.js';
+import { UserData } from '../utils/connection-manager.js';
+import { LoginClose, IndexOpen } from '../utils/window-manager.js';
 
 const authFormLogin = document.getElementById('AuthLogin');
 
@@ -80,13 +83,52 @@ authFormLogin.addEventListener('submit', (e) => {
           device_name: 'sBotics',
         })
         .then(function (response) {
-          console.log(response['data']);
-          CreateTopAlert({
-            states: 'success',
-            idInner: 'TopAlertError',
-            absolute: true,
-            message: 'Úsuario autenticado',
-          });
+          const access_token = response['data']['access_token'];
+          UserData({
+            accessToken: access_token,
+          })
+            .then((response) => {
+              if (
+                !CreateUserFile({
+                  data: {
+                    name: 'julio cesar vera neto',
+                    email: response['email'],
+                    profilePicture: response['profile_photo_url'],
+                    locale: response['locale'],
+                    accessToken: access_token,
+                    logged: false,
+                  },
+                })
+              ) {
+                CreateTopAlert({
+                  states: 'danger',
+                  idInner: 'TopAlertError',
+                  absolute: true,
+                  message:
+                    'Uma falha inesperada aconteceu! Tente novamente mais tarde.',
+                });
+                MessageLabel({ element: userEmail, label: userEmailLabel });
+                MessageLabel({
+                  element: userPassword,
+                  label: userPasswordLabel,
+                });
+                return;
+              }
+
+              LoginClose();
+              IndexOpen();
+            })
+            .catch((err) => {
+              CreateTopAlert({
+                states: 'danger',
+                idInner: 'TopAlertError',
+                absolute: true,
+                message:
+                  'Uma falha inesperada ao localizar dados! Tente novamente mais tarde.',
+              });
+              MessageLabel({ element: userEmail, label: userEmailLabel });
+              MessageLabel({ element: userPassword, label: userPasswordLabel });
+            });
         })
         .catch(function (error) {
           console.log(error);
