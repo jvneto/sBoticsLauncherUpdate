@@ -83,71 +83,55 @@ const init = async () => {
 
   await asyncWait(800);
 
-  try {
-    Update({
-      id: 'LoadBar',
-      addState: 'info',
-      percentage: 20,
-      text: [
-        {
-          textContainer: 'TextProgress',
-          message:
-            '<i class="fas fa-file-archive text-info"></i> <span style="margin-left: 13px">Procurando atualização do sBotics Launcher. Aguarde!</span>',
-        },
-      ],
-    });
+  Update({
+    id: 'LoadBar',
+    addState: 'info',
+    percentage: 20,
+    text: [
+      {
+        textContainer: 'TextProgress',
+        message:
+          '<i class="fas fa-file-archive text-info"></i> <span style="margin-left: 13px">Procurando atualização do sBotics Launcher. Aguarde!</span>',
+      },
+    ],
+  });
 
-    if (UpdateInit()) {
-      await asyncWait(800);
-      const UpdateAvailable = await UpdateAvailable;
-      const UpdateNotAvailable = await UpdateNotAvailable;
+  if (UpdateInit()) {
+    await asyncWait(800);
+    const updateAvailable = await UpdateAvailable;
+    const updateNotAvailable = await UpdateNotAvailable;
 
-      if (UpdateAvailable['state']) {
-        Update({
-          id: 'LoadBar',
-          addState: 'success',
-          removeState: 'info',
-          percentage: 25,
-          text: [
-            {
-              textContainer: 'TextProgress',
-              message:
-                '<i class="fas fa-file-archive text-info"></i> <strong style="margin-left: 13px">Atualização disponivel, fazendo download! Aguarde...</strong>',
-            },
-          ],
-        });
-      }
-      if (UpdateNotAvailable['state']) {
-
-        Update({
-          id: 'LoadBar',
-          addState: 'success',
-          removeState: 'info',
-          percentage: 25,
-          text: [
-            {
-              textContainer: 'TextProgress',
-              message:
-                '<i class="fas fa-file-archive text-info"></i> <strong style="margin-left: 13px">sBotics Launcher esta na ultima versão disponivel!</strong>',
-            },
-          ],
-        });
-
-      }
-    } else if (!SLMP())
-      return Update({
+    if (updateAvailable['state']) {
+      Update({
         id: 'LoadBar',
-        addState: 'danger',
-        percentage: 100,
+        addState: 'success',
+        removeState: 'info',
+        percentage: 25,
         text: [
           {
             textContainer: 'TextProgress',
             message:
-              '<i class="fas fa-file-archive text-danger"></i> <strong style="margin-left: 13px">Falha!</strong> Não foi possivel procurar atualização. Tente novamente mais tarde!',
+              '<i class="fas fa-file-archive text-info"></i> <strong style="margin-left: 13px">Atualização disponivel, fazendo download! Aguarde...</strong>',
           },
         ],
       });
-  } catch (error) {
+    }
+    if (updateNotAvailable['state']) {
+      Update({
+        id: 'LoadBar',
+        addState: 'success',
+        removeState: 'info',
+        percentage: 25,
+        text: [
+          {
+            textContainer: 'TextProgress',
+            message:
+              '<i class="fas fa-file-archive text-info"></i> <strong style="margin-left: 13px">sBotics Launcher esta na ultima versão disponivel!</strong>',
+          },
+        ],
+      });
+    }
+  } else if (!SLMP())
     return Update({
       id: 'LoadBar',
       addState: 'danger',
@@ -156,11 +140,10 @@ const init = async () => {
         {
           textContainer: 'TextProgress',
           message:
-            '<i class="fas fa-dumpster-fire text-danger"></i> <strong style="margin-left: 5px; margin-right: 13px;">[LauncherProtection]</strong> A procura de atualização foi abortada, por conta de uma falha localizada!',
+            '<i class="fas fa-file-archive text-danger"></i> <strong style="margin-left: 13px">Falha!</strong> Não foi possivel procurar atualização. Tente novamente mais tarde!',
         },
       ],
     });
-  }
 };
 
 $(document).ready(() => {
