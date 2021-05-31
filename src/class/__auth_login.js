@@ -64,6 +64,20 @@ $(document).on('input', '#UserPassword', () => {
     });
 });
 
+$('#UserRememberCredential').on('change', function () {
+  if ($(this).is(':checked')) {
+    $(this).attr('value', 'true');
+    $('.messageWarningLogin')
+      .removeClass('text-secondary')
+      .addClass('text-warning');
+  } else {
+    $(this).attr('value', 'false');
+    $('.messageWarningLogin')
+      .removeClass('text-warning')
+      .addClass('text-secondary');
+  }
+});
+
 authFormLogin.addEventListener('submit', (e) => {
   e.preventDefault();
   const userEmail = document.getElementById('UserEmail');

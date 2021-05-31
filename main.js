@@ -29,7 +29,7 @@ const Load_OpenApplication = (screenSizeCalc) => {
     {
       width: width, //300
       height: height, //350
-      showDevTools: false,
+      showDevTools: true,
       DevTools: true,
       menu: null,
       frame: false,
@@ -66,32 +66,32 @@ ipcMain.on('update-init', (event) => {
 });
 
 autoUpdater.on('checking-for-update', () => {
-  load_application.webContents.send('update-checking', true);
+  load_application.content().send('update-checking', true);
 });
 
 autoUpdater.on('update-available', (info) => {
-  load_application.webContents.send('update-available', {
+  load_application.content().send('update-available', {
     state: true,
     data: info,
   });
 });
 
 autoUpdater.on('update-not-available', (info) => {
-  load_application.webContents.send('update-not-available', {
+  load_application.content().send('update-not-available', {
     state: false,
     data: info,
   });
 });
 
 autoUpdater.on('download-progress', (progressObj) => {
-  load_application.webContents.send('update-download-progress', {
+  load_application.content().send('update-download-progress', {
     state: false,
     progress: progressObj,
   });
 });
 
 autoUpdater.on('update-downloaded', (info) => {
-  load_application.webContents.send('update-downloaded', {
+  load_application.content().send('update-downloaded', {
     state: true,
     info: info,
   });

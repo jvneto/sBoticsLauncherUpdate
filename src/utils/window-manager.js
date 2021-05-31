@@ -1,7 +1,8 @@
 var remote = require('electron').remote;
 var { screen } = remote;
 var windowManager = remote.require('electron-window-manager');
-import { AppDefaultPath } from '../utils/application-manager.js';
+
+var GlobalShowDevTools = false;
 
 const LoadClose = () => {
   windowManager.close('load');
@@ -21,8 +22,8 @@ const LoginOpen = () => {
     {
       width: width,
       height: height,
-      showDevTools: false,
-      DevTools: true,
+      showDevTools: GlobalShowDevTools,
+      DevTools: GlobalShowDevTools,
       menu: null,
       frame: false,
       webPreferences: {
@@ -54,8 +55,8 @@ const IndexOpen = () => {
     {
       width: width,
       height: height,
-      showDevTools: false,
-      DevTools: true,
+      showDevTools: GlobalShowDevTools,
+      DevTools: GlobalShowDevTools,
       menu: null,
       frame: true,
       webPreferences: {

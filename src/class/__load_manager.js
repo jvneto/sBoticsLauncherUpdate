@@ -148,6 +148,7 @@ const init = async () => {
       },
     ],
   });
+
   try {
     if (UpdateInit()) {
       await asyncWait(600);
@@ -197,7 +198,7 @@ const init = async () => {
       });
     }
   } catch (error) {
-    Update({
+    return Update({
       id: 'LoadBar',
       addState: 'danger',
       removeState: 'info',
