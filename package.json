@@ -1,0 +1,54 @@
+{
+  "name": "sbotics-launcher",
+  "version": "3.0.11",
+  "description": "sBotics",
+  "main": "main.js",
+  "author": "Julio Cesar <60150667+jvneto@users.noreply.github.com>",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "electron .",
+    "build-win": "electron-builder build --win --ia32 --publish never",
+    "deploy-win": "electron-builder build --win --ia32 --publish always",
+    "build-mac": "electron-builder build --mac --publish never",
+    "deploy-mac": "electron-builder build --mac --publish onTagOrDraft",
+    "build-linux": "electron-builder build --linux --publish never",
+    "deploy-linux": "electron-builder build --linux --x64 --publish onTagOrDraft"
+  },
+  "build": {
+    "asar": true,
+    "productName": "sBotics Launcher",
+    "win": {
+      "icon": "./icons/icon.ico"
+    },
+    "linux": {
+      "icon": "icons/",
+      "target": "AppImage"
+    },
+    "mac": {
+      "icon": "./icons/icon.icns",
+      "target": "default"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jvneto/sBoticsLauncherUpdate.git"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cryptr": "^6.0.2",
+    "custom-electron-titlebar": "^3.2.7",
+    "dotenv": "^10.0.0",
+    "electron-updater": "^4.3.8",
+    "electron-window-manager": "^1.0.6",
+    "extend-shallow": "^3.0.2",
+    "jquery": "^3.6.0",
+    "read-json-sync": "^2.0.1",
+    "sbotics-files-manager": "^1.2.7"
+  },
+  "devDependencies": {
+    "electron": "^9.0.5",
+    "electron-builder": "^22.7.0",
+    "electron-packager": "^15.0.0",
+    "electron-reloader": "^1.2.0"
+  }
+}
