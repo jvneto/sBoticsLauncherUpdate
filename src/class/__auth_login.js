@@ -63,18 +63,20 @@ $(document).on('input', '#UserPassword', () => {
       add: 'input',
     });
 });
-
+var RememberCredential = false;
 $('#UserRememberCredential').on('change', function () {
   if ($(this).is(':checked')) {
     $(this).attr('value', 'true');
     $('.messageWarningLogin')
       .removeClass('text-secondary')
       .addClass('text-warning');
+    RememberCredential = true;
   } else {
     $(this).attr('value', 'false');
     $('.messageWarningLogin')
       .removeClass('text-warning')
       .addClass('text-secondary');
+    RememberCredential = false;
   }
 });
 
@@ -105,12 +107,12 @@ authFormLogin.addEventListener('submit', (e) => {
               if (
                 !CreateUserFile({
                   data: {
-                    name: 'julio cesar vera neto',
+                    name: response['email'],
                     email: response['email'],
                     profilePicture: response['profile_photo_url'],
                     locale: response['locale'],
                     accessToken: access_token,
-                    logged: false,
+                    logged: RememberCredential,
                   },
                 })
               ) {

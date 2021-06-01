@@ -1,4 +1,4 @@
-var { app, ipcRenderer } = require('electron');
+var { app, ipcRenderer } = require('electron').remote;
 const remote = require('electron').remote;
 
 const SLMP = () => {
@@ -18,4 +18,29 @@ const AppDefaultPath = () => {
   return ipcRenderer.sendSync('app-defaultpath');
 };
 
-export { SLMP, SystemGetLocale, AppDefaultPath };
+const AppVersion = () => {
+  return app.getVersion();
+};
+
+const DetectOS = () => {
+  return process.platform.toLowerCase();
+};
+
+const DetecOSFolder = () => {
+  const platforms = {
+    win32: 'W32',
+    darwin: 'mac',
+    linux: 'Linux AMD64',
+  };
+  var os = process.platform.toLowerCase();
+  return platforms[os];
+};
+
+export {
+  SLMP,
+  SystemGetLocale,
+  AppDefaultPath,
+  AppVersion,
+  DetectOS,
+  DetecOSFolder,
+};

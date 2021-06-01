@@ -32,8 +32,9 @@
 
       <div class="backdrop"></div>
 
-      <div class="w-100 d-flex justify-content-start aling-items-center p-3">
+      <div class="w-100 d-flex justify-content-between aling-items-center p-3">
         <img class="logo" src="../assets/logos/logo.png" alt="" />
+        <span class="text-secondary fw-bold" id="TextVersion"></span>
       </div>
 
       <div
@@ -124,11 +125,11 @@
             "
           >
             <div class="d-flex flex-row">
-              <a href="" class="text-white btn btn-sm bg-sbotics"
+              <a id="RegisterwEduc" class="text-white btn btn-sm bg-sbotics"
                 >Criar uma conta wEduc</a
               >
               <a
-                href=""
+                id="ForgotPasswordwEduc"
                 class="text-white ms-3 btn btn-sm btn-outline-secondary"
                 >Esqueceu sua Senha?</a
               >
@@ -150,13 +151,28 @@
       import {
         TitleBar,
         backdrop,
+        TextVersion
       } from '../src/class/__interface_components.js';
+      import { LinkOpen } from '../src/utils/window-manager.js';
 
+      $('#RegisterwEduc').click(() => {
+        LinkOpen(
+          'https://auth.weduc.natalnet.br/register',
+          'sBotics Launcher | Criar Conta no wEduc',
+        );
+      });
+      $('#ForgotPasswordwEduc').click(() => {
+        LinkOpen(
+          'https://auth.weduc.natalnet.br/forgot-password',
+          'sBotics Launcher | Esqueceu a senha no wEduc',
+        );
+      });
       $(document).ready(() => {
         TitleBar();
         backdrop({
           elementName: 'backdrop',
         });
+        TextVersion({ elementName: 'TextVersion' });
       });
     </script>
   </body>

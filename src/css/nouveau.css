@@ -182,7 +182,7 @@ ul.bot li {
 .top-container-absolute {
   width: 100%;
   margin: 0;
-  position: absolute;
+  position: fixed;
 }
 
 .pointer {

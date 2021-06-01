@@ -1,6 +1,6 @@
 {
   "name": "sbotics-launcher",
-  "version": "1.0.20",
+  "version": "3.0.27",
   "description": "sBotics",
   "main": "main.js",
   "author": "Julio Cesar <60150667+jvneto@users.noreply.github.com>",
@@ -41,8 +41,10 @@
     "electron-updater": "^4.3.8",
     "electron-window-manager": "^1.0.6",
     "extend-shallow": "^3.0.2",
+    "fs-extra": "^10.0.0",
     "jquery": "^3.6.0",
     "read-json-sync": "^2.0.1",
+    "sbotics-downloader": "^1.1.2",
     "sbotics-files-manager": "^1.2.7"
   },
   "devDependencies": {

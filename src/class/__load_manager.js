@@ -1,4 +1,8 @@
-import { TitleBar, backdrop } from '../class/__interface_components.js';
+import {
+  TitleBar,
+  backdrop,
+  TextVersion,
+} from '../class/__interface_components.js';
 import { Create, Update } from '../utils/progress-bar.js';
 import {
   URLdictionary,
@@ -26,6 +30,7 @@ const InterfaceLoad = async () => {
   await backdrop({
     elementName: 'backdrop',
   });
+  await TextVersion({ elementName: 'TextVersion' });
   Create({
     percentage: 2,
     id: 'LoadBar',
@@ -302,7 +307,7 @@ const init = async () => {
               },
             ],
           });
-        
+
           IndexOpen();
           LoadClose();
         })

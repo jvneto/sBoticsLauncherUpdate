@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../src/css/nouveau-diff.css" />
     <link rel="stylesheet" href="../src/css/nouveau-scroll-bar.css" />
     <link rel="stylesheet" href="../src/css/nouveau-config.css" />
-    <link rel="stylesheet" href="../src/css/nouveau-alert.css">
+    <link rel="stylesheet" href="../src/css/nouveau-alert.css" />
 
     <!-- Import Utils -->
     <script src="../src/utils/jquery.js"></script>
@@ -33,7 +33,6 @@
   </head>
   <body>
     <div id="overlay"></div>
-
     <div class="contents">
       <div class="col-left">
         <ul class="top">
@@ -118,18 +117,12 @@
 
         <!-- Init Top Alert -->
         <div class="top-container-absolute">
-          <div id="top-alert-container" class="top-alert-container">
-          </div>
-          <div class="progress">
-            <div
-              class="progress-bar"
-              style="width: 50%"
-              role="progressbar"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
+          <div id="top-alert-container" class="top-alert-container"></div>
+          <div
+            id="ProgreesBar"
+            class="progress"
+            style="height: 10px; border-radius: 0px"
+          ></div>
         </div>
 
         <!-- End Top Alert -->
@@ -206,21 +199,6 @@
     </div>
 
     <!-- Scripts Init -->
-
-    <script type="module">
-      import { backdrop } from '../src/class/__interface_components.js';
-
-      $(document).ready(() => {
-        backdrop({ elementName: 'backdrop' });
-
-        $('.close-alert').click(function () {
-          $('.top-alert').css('display', 'none');
-        });
-
-        $('.close-config').click(function () {
-          $('.config-content').css('display', 'none');
-        });
-      });
-    </script>
+    <script type="module" src="../src/class/__index_manager.js"></script>
   </body>
 </html>

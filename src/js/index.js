@@ -224,11 +224,13 @@ const GetFolder = () => {
   }
   return ret;
 };
+
 const getFilesizeInBytes = (filepath) => {
   var stats = fs.statSync(filepath);
   var fileSizeInBytes = stats['size'];
   return fileSizeInBytes;
 };
+
 const ParseTime = (filedate) => {
   var year = parseInt(filedate.slice(0, 4));
   var month = parseInt(filedate.slice(5, 7));

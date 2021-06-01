@@ -16,10 +16,9 @@ const ScreenCalc = () => {
 const Load_OpenApplication = (screenSizeCalc) => {
   const height = Math.round(screenSizeCalc.height * 0.5);
   const width = Math.round((16 * height) / 11);
-  // New
   windowManager.init({
     devMode: false,
-    defaultWindowTitle: 'BlockEduc',
+    defaultWindowTitle: 'sBotics Launcher',
   });
   load_application = windowManager.createNew(
     'load',
@@ -29,10 +28,11 @@ const Load_OpenApplication = (screenSizeCalc) => {
     {
       width: width, //300
       height: height, //350
-      showDevTools: true,
-      DevTools: true,
+      showDevTools: false,
+      DevTools: false,
       menu: null,
       frame: false,
+      resizable: false, 
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
