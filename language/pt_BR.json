@@ -28,5 +28,19 @@
   "Forgot your password?": "Esqueceu sua Senha?",
   "Password": "Senha",
   "Password:": "Senha:",
-  "Access": "Acessar"
+  "Access": "Acessar",
+  "Looking for update! Hold...": "Procurando atualização! Aguarde...",
+  "Installing sBotics! Hold...": "Instalando sBotics! Aguarde...",
+  "Updating sBotics! Hold...": "Atualizando o sBotics! Aguarde...",
+  "Enter an email.": "Digite um email.",
+  "Enter a password.": "Digite uma senha.",
+  "Enter a valid email address.": "Enter a valid email address.",
+  "The password must be at least 8 characters long.": "A senha deve ter pelo menos 8 caracteres.",
+  "These credentials were not found in our records.": "Essas credenciais não foram encontradas em nossos registros.",
+  "An unexpected failure to find data! Try again later.": "Uma falha inesperada ao localizar dados! Tente novamente mais tarde.",
+  "An unexpected failure happened! Try again later.": "Uma falha inesperada aconteceu! Tente novamente mais tarde.",
+  "Start": "Iniciar",
+  "Install sBotics": "Instalar sBotics",
+  "Update sBotics": "Atualizar sBotics",
+  "Repair sBotics Installation": "Reparar Instalação do sBotics"
 }

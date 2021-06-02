@@ -1,19 +1,26 @@
 var extend = require('extend-shallow');
+import { Lang } from '../utils/language-manager.js';
 
 const Modes = {
   start: {
     theme: 'bg-success text-white MagicButtonCenter',
-    text: '<i class="far fa-play-circle iconMagicButton"></i> <span class="textoMagicButton">Iniciar</span>',
+    text: `<i class="far fa-play-circle iconMagicButton"></i> <span class="textoMagicButton">${Lang(
+      'Start',
+    )}</span>`,
     state: true,
   },
   install: {
     theme: 'bg-primary text-white MagicButtonCenter',
-    text: '<i class="fas fa-download iconMagicButton"></i> <span class="textoMagicButton">Instalar</span>',
+    text: `<i class="fas fa-download iconMagicButton"></i> <span class="textoMagicButton">${Lang(
+      'Install sBotics',
+    )}</span>`,
     state: true,
   },
   update: {
     theme: 'bg-sbotics-info text-white MagicButtonCenter',
-    text: '<i class="fas fa-download iconMagicButton"></i> <span class="textoMagicButton">Atualizar</span>',
+    text: `<i class="fas fa-download iconMagicButton"></i> <span class="textoMagicButton">${Lang(
+      'Update sBotics',
+    )}</span>`,
     state: true,
   },
   process: {
@@ -23,7 +30,9 @@ const Modes = {
   },
   repair_installation: {
     theme: 'bg-danger text-white MagicButtonCenter',
-    text: '<i class="fas fa-tools iconMagicButton"></i> <span class="textoMagicButton">Reparar Instalação</span>',
+    text: `<i class="fas fa-tools iconMagicButton"></i> <span class="textoMagicButton">${Lang(
+      'Repair sBotics Installation',
+    )}</span>`,
     state: true,
   },
 };

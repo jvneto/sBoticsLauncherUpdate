@@ -5,6 +5,7 @@ import { CreateTopAlert } from '../utils/top-alert.js';
 import { CreateUserFile, OpenUserFile } from '../class/__file_user.js';
 import { UserData } from '../utils/connection-manager.js';
 import { LoginClose, IndexOpen } from '../utils/window-manager.js';
+import { LanguageInit, Lang } from '../utils/language-manager.js';
 
 const authFormLogin = document.getElementById('AuthLogin');
 
@@ -120,8 +121,9 @@ authFormLogin.addEventListener('submit', (e) => {
                   states: 'danger',
                   idInner: 'TopAlertError',
                   absolute: true,
-                  message:
-                    'Uma falha inesperada aconteceu! Tente novamente mais tarde.',
+                  message: Lang(
+                    'An unexpected failure happened! Try again later.',
+                  ),
                 });
                 MessageLabel({ element: userEmail, label: userEmailLabel });
                 MessageLabel({
@@ -139,8 +141,9 @@ authFormLogin.addEventListener('submit', (e) => {
                 states: 'danger',
                 idInner: 'TopAlertError',
                 absolute: true,
-                message:
-                  'Uma falha inesperada ao localizar dados! Tente novamente mais tarde.',
+                message: Lang(
+                  'An unexpected failure to find data! Try again later.',
+                ),
               });
               MessageLabel({ element: userEmail, label: userEmailLabel });
               MessageLabel({ element: userPassword, label: userPasswordLabel });
@@ -152,8 +155,7 @@ authFormLogin.addEventListener('submit', (e) => {
             states: 'danger',
             idInner: 'TopAlertError',
             absolute: true,
-            message:
-              'Essas credenciais não foram encontradas em nossos registros.',
+            message: Lang('These credentials were not found in our records.'),
           });
           MessageLabel({ element: userEmail, label: userEmailLabel });
           MessageLabel({ element: userPassword, label: userPasswordLabel });
@@ -163,13 +165,13 @@ authFormLogin.addEventListener('submit', (e) => {
         MessageLabel({
           element: userEmail,
           label: userEmailLabel,
-          message: 'Digite um email valido.',
+          message: Lang('Enter a valid email address.'),
         });
       if (!pass)
         MessageLabel({
           element: userPassword,
           label: userPasswordLabel,
-          message: 'A senha deve ter pelo menos 8 caracteres.',
+          message: Lang('The password must be at least 8 characters long.'),
         });
     }
   } else {
@@ -177,13 +179,13 @@ authFormLogin.addEventListener('submit', (e) => {
       MessageLabel({
         element: userEmail,
         label: userEmailLabel,
-        message: 'Digite um email.',
+        message: Lang('Enter an email.'),
       });
     if (!userPasswordValue)
       MessageLabel({
         element: userPassword,
         label: userPasswordLabel,
-        message: 'Digite uma senha.',
+        message: Lang('Enter a password.'),
       });
   }
 });

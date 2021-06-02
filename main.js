@@ -35,8 +35,8 @@ const Load_OpenApplication = (screenSizeCalc) => {
     {
       width: width,
       height: height,
-      showDevTools: true,
-      DevTools: true,
+      showDevTools: false,
+      DevTools: false,
       menu: null,
       frame: false,
       resizable: false,

@@ -1,5 +1,6 @@
 const readJsonSync = require('read-json-sync');
 import { AppDefaultPath } from '../utils/application-manager.js';
+import { OpenConfig } from '../class/__file_config.js';
 
 const languageAvariable = ['pt_BR'];
 var defaultLanguage = '';
@@ -23,6 +24,7 @@ const LanguageInit = (config) => {
 
 const Lang = (text) => {
   if (!text) return '';
+  if (languageDataBase[text] == undefined) LanguageInit(OpenConfig());
   return languageDataBase
     ? languageDataBase[text]
       ? languageDataBase[text]

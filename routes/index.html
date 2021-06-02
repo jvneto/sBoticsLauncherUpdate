@@ -43,7 +43,13 @@
           </li>
 
           <li>
-            <a id="TutorialButton" class="d-block">
+            <a
+              id="TutorialButton"
+              class="d-block"
+              data-bs-toggle="tooltip"
+              data-bs-placement="right"
+              title="sBotics Tutorial"
+            >
               <img class="menu-icons" src="../assets/icons/book.png" />
             </a>
           </li>
@@ -168,7 +174,10 @@
                 <div class="line"></div>
                 <span id="Or">OU</span>
               </div>
-              <button id="OpenFolderInstall" class="w-100 btn btn-outline-secondary MagicButtonCenter">
+              <button
+                id="OpenFolderInstall"
+                class="w-100 btn btn-outline-secondary MagicButtonCenter"
+              >
                 <i class="fas fa-folder-open iconMagicButton"></i>
                 <span class="textoMagicButton">Abrir pasta de instalação</span>
               </button>
@@ -178,15 +187,15 @@
           <div class="custom-row">
             <div class="col-12 col-bottom">
               <span id="Text_Last_Version">Última versão</span>
-              <h2 id="Text_Version">Versão 5.2.0</h2>
-              <ul id="PatchNoteContainer" class="diff">
+              <h2 id="Text_Version">Versão 1.6.0.2</h2>
+              <!-- <ul id="PatchNoteContainer" class="diff">
                 <add>Adicionado com sucesso</add>
                 <change>Adicionado com sucesso</change>
                 <remove>Adicionado com sucesso</remove>
                 <note>Olá Mundo!</note>
-              </ul>
+              </ul> -->
             </div>
-            <div class="col-12 col-bottom">
+            <!-- <div class="col-12 col-bottom">
               <h2 style="margin-left: 10px" class="mt-4" id="Text_Description">
                 Descrição
               </h2>
@@ -202,13 +211,21 @@
                 sBotics oferece uma alternativa para aqueles que desejam testar
                 seus conhecimentos de robótica e programação.
               </p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
 
     <!-- Scripts Init -->
+    <!-- <script>
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script> -->
     <script src="../src/utils/env.js"></script>
     <script type="module" src="../src/class/__index_manager.js"></script>
   </body>

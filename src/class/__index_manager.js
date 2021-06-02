@@ -14,6 +14,9 @@ import { MagicButton } from '../utils/magic-button-manager.js';
 import { OpenSbotics } from '../utils/open-sbotics.js';
 import { UpdateUserFile } from '../class/__file_user.js';
 import { LoginOpen, IndexClose } from '../utils/window-manager.js';
+import { LanguageInit, Lang } from '../utils/language-manager.js';
+import { LinkOpen } from '../utils/window-manager.js';
+import { OpenConfig } from './__file_config.js';
 
 // Interface Manager
 $('.close-alert').click(function () {
@@ -99,7 +102,7 @@ const DonwnloadsBotics = async (modeText = '') => {
 const FilesVerification = async () => {
   MagicButton({
     mode: 'process',
-    text: 'Procurando atualização! Aguarde...',
+    text: Lang('Looking for update! Hold...'),
   });
 
   const dataUpdate = await DataUpdate();
@@ -128,6 +131,7 @@ const FilesVerification = async () => {
 
 $(document).ready(() => {
   InterfaceLoad();
+  LanguageInit(OpenConfig());
   FilesVerification();
 });
 
@@ -139,11 +143,11 @@ $(document).on('click', '#MagicButtonClick', () => {
 
   switch (mode) {
     case 'install':
-      DonwnloadsBotics('Instalando sBotics! Aguarde...');
+      DonwnloadsBotics(Lang('Installing sBotics! Hold...'));
       break;
 
     case 'update':
-      DonwnloadsBotics('Atualizando o sBotics! Aguarde...');
+      DonwnloadsBotics(Lang('Updating sBotics! Hold...'));
       break;
     case 'start':
       OpenSbotics();
@@ -152,8 +156,6 @@ $(document).on('click', '#MagicButtonClick', () => {
       break;
   }
 });
-
-import { LinkOpen } from '../utils/window-manager.js';
 
 $(document).on('click', '#cBoticsButton', () => {
   LinkOpen('https://cbotics.weduc.natalnet.br/', 'cBotics');
