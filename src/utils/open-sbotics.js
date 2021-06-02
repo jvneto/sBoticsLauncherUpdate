@@ -45,7 +45,7 @@ const OpenSbotics = () => {
     );
   }
   var executablePath = string_execute;
-  var parameters = ['--lang', 'en', '--auth_token', fileUser['accessToken']];
+  var parameters = ['--lang', fileConfig['languageSimulator'], '--auth_token', fileUser['accessToken']];
   child(executablePath, parameters, { detached: true });
 };
 export { OpenSbotics };

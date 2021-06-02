@@ -11,7 +11,7 @@ import {
 } from '../utils/connection-manager.js';
 import { OpenConfig } from '../class/__file_config.js';
 import { CreateUserFile, OpenUserFile } from '../class/__file_user.js';
-import { LanguageInit } from '../utils/language-manager.js';
+import { LanguageInit, Lang } from '../utils/language-manager.js';
 import { asyncWait } from '../utils/wait-manager.js';
 import {
   UpdateInit,
@@ -37,8 +37,9 @@ const InterfaceLoad = async () => {
     text: [
       {
         textContainer: 'TextProgress',
-        message:
-          '<i class="fas fa-rocket text-rainbow"></i> <span style="margin-left: 13px">Esquentando motores! Aguarde...</span>',
+        message: `<i class="fas fa-rocket text-rainbow"></i> <span style="margin-left: 13px">${Lang(
+          'Warming up engines! Hold...',
+        )}</span`,
       },
     ],
   });
@@ -54,8 +55,9 @@ const init = async () => {
     text: [
       {
         textContainer: 'TextProgress',
-        message:
-          '<i class="fas fa-wifi text-info"></i> <span style="margin-left: 13px">Verificando Conexão com a internet. Aguarde! </span>',
+        message: `<i class="fas fa-wifi text-info"></i> <span style="margin-left: 13px">${Lang(
+          'Checking Internet Connection! Hold...',
+        )}</span>`,
       },
     ],
   });
@@ -72,8 +74,9 @@ const init = async () => {
         text: [
           {
             textContainer: 'TextProgress',
-            message:
-              '<i class="fas fa-wifi text-success"></i> <strong style="margin-left: 13px"> Conectado na Internet</strong>',
+            message: `<i class="fas fa-wifi text-success"></i> <strong style="margin-left: 13px">${Lang(
+              'Connected to the internet',
+            )}</strong>`,
           },
         ],
       });
@@ -85,8 +88,9 @@ const init = async () => {
       text: [
         {
           textContainer: 'TextProgress',
-          message:
-            '<i class="fas fa-wifi text-danger"></i> <strong style="margin-left: 13px"> Sem conexão com a internet! </strong> Verifique sua conexão com a internet',
+          message: `<i class="fas fa-wifi text-danger"></i> <strong style="margin-left: 13px">${Lang(
+            'No internet connection!',
+          )}</strong>${Lang('Check your internet connection.')}`,
         },
       ],
     });
@@ -101,8 +105,9 @@ const init = async () => {
     text: [
       {
         textContainer: 'TextProgress',
-        message:
-          '<i class="fas fa-wifi text-info"></i> <span style="margin-left: 13px">Verificando Conexão com nossos servidores. Aguarde! </span>',
+        message: `<i class="fas fa-wifi text-info"></i> <span style="margin-left: 13px">${Lang(
+          'Checking Connection to Our Servers! Hold...',
+        )}</span>`,
       },
     ],
   });
@@ -119,8 +124,9 @@ const init = async () => {
         text: [
           {
             textContainer: 'TextProgress',
-            message:
-              '<i class="fas fa-wifi text-success"></i> <strong style="margin-left: 13px">Conectado em nossos servidores.</strong>',
+            message: `<i class="fas fa-wifi text-success"></i> <strong style="margin-left: 13px">${Lang(
+              'Connected to our servers.',
+            )}</strong>`,
           },
         ],
       });
@@ -132,8 +138,9 @@ const init = async () => {
       text: [
         {
           textContainer: 'TextProgress',
-          message:
-            '<i class="fas fa-wifi text-danger"></i> <strong style="margin-left: 13px"> Não foi possivel se conectar a nossos servidores! </strong> Tente novamente mais tarde.',
+          message: `<i class="fas fa-wifi text-danger"></i> <strong style="margin-left: 13px">${Lang(
+            'Unable to connect to our servers!',
+          )} </strong>${Lang('Try again later')}`,
         },
       ],
     });
@@ -148,8 +155,9 @@ const init = async () => {
     text: [
       {
         textContainer: 'TextProgress',
-        message:
-          '<i class="fas fa-file-archive text-info"></i> <span style="margin-left: 13px">Procurando atualização do sBotics Launcher. Aguarde!</span>',
+        message: `<i class="fas fa-file-archive text-info"></i> <span style="margin-left: 13px">${Lang(
+          'Looking for sBotics Launcher update! Hold...',
+        )}</span>`,
       },
     ],
   });
@@ -166,8 +174,9 @@ const init = async () => {
           text: [
             {
               textContainer: 'TextProgress',
-              message:
-                '<i class="fas fa-file-archive text-info"></i> <strong style="margin-left: 13px">Atualização disponivel, fazendo download! Aguarde...</strong>',
+              message: `<i class="fas fa-file-archive text-info"></i> <strong style="margin-left: 13px">${Lang(
+                'Update available by downloading! Hold...',
+              )}</strong>`,
             },
           ],
         });
@@ -181,8 +190,9 @@ const init = async () => {
           text: [
             {
               textContainer: 'TextProgress',
-              message:
-                '<i class="fas fa-file-archive text-success"></i> <strong style="margin-left: 13px">sBotics Launcher esta na ultima versão disponivel!</strong>',
+              message: `<i class="fas fa-file-archive text-success"></i> <strong style="margin-left: 13px">${Lang(
+                'sBotics Launcher is in the latest version available!',
+              )}</strong>`,
             },
           ],
         });
@@ -196,8 +206,9 @@ const init = async () => {
         text: [
           {
             textContainer: 'TextProgress',
-            message:
-              '<i class="fas fa-file-archive text-danger"></i> <strong style="margin-left: 13px">Falha!</strong> Não foi possivel procurar atualização. Tente novamente mais tarde!',
+            message: `<i class="fas fa-file-archive text-danger"></i> <strong style="margin-left: 13px">${Lang(
+              'Failure!',
+            )}</strong>${Lang('Unable to look for updates. Try again later!')}`,
           },
         ],
       });
@@ -211,8 +222,9 @@ const init = async () => {
       text: [
         {
           textContainer: 'TextProgress',
-          message:
-            '<i class="fas fa-dumpster-fire text-danger"></i> <strong style="margin-left: 5px; margin-right: 13px;">[LauncherProtection]</strong> A procura de atualização foi abortada, por conta de uma falha localizada!',
+          message: `<i class="fas fa-dumpster-fire text-danger"></i> <strong style="margin-left: 5px; margin-right: 13px;">[LauncherProtection]</strong>${Lang(
+            'Update search aborted due to a localized failure!',
+          )}`,
         },
       ],
     });
@@ -228,8 +240,9 @@ const init = async () => {
       text: [
         {
           textContainer: 'TextProgress',
-          message:
-            '<i class="fas fa-file-archive text-info"></i> <span style="margin-left: 13px">Procurando e carregando seus dados. Aguarde!</span>',
+          message: `<i class="fas fa-file-archive text-info"></i> <span style="margin-left: 13px">${Lang(
+            'Searching and loading your data! Hold...',
+          )}</span>`,
         },
       ],
     });
@@ -243,8 +256,11 @@ const init = async () => {
         text: [
           {
             textContainer: 'TextProgress',
-            message:
-              '<i class="fas fa-user-circle text-danger"></i> <strong style="margin-left: 13px">Falha Detectada!</strong> Ao tentar localizar dados do usuário uma falha foi localizada! Aguarde tentando resolver!',
+            message: `<i class="fas fa-user-circle text-danger"></i> <strong style="margin-left: 13px">${Lang(
+              'Failure Detected!',
+            )}</strong>${Lang(
+              'While trying to find user data a fault was found! Wait trying to solve.',
+            )}`,
           },
         ],
       });
@@ -257,8 +273,9 @@ const init = async () => {
           text: [
             {
               textContainer: 'TextProgress',
-              message:
-                '<i class="fas fa-user-circle text-info"></i> <span style="margin-left: 13px">Resolvido mais o login é necessario!</span>',
+              message: `<i class="fas fa-user-circle text-info"></i> <span style="margin-left: 13px">${Lang(
+                'Solved but login is required!',
+              )}</span>`,
             },
           ],
         });
@@ -274,8 +291,9 @@ const init = async () => {
           text: [
             {
               textContainer: 'TextProgress',
-              message:
-                '<i class="fas fa-dumpster-fire text-danger"></i> <strong style="margin-left: 5px; margin-right: 13px;">[LauncherProtection]</strong> Não foi possível corrigir a falha localizada.',
+              message: `<i class="fas fa-dumpster-fire text-danger"></i> <strong style="margin-left: 5px; margin-right: 13px;">[LauncherProtection]</strong> ${Lang(
+                'Unable to fix the fault found.',
+              )}`,
             },
           ],
         });
@@ -302,8 +320,9 @@ const init = async () => {
             text: [
               {
                 textContainer: 'TextProgress',
-                message:
-                  '<i class="fas fa-user-circle text-success"></i> <span style="margin-left: 13px">Sucesso! Abrindo sBotics Launcher</span>',
+                message: `<i class="fas fa-user-circle text-success"></i> <span style="margin-left: 13px">${Lang(
+                  'Success! Opening sBotics Launcher',
+                )}</span>`,
               },
             ],
           });
@@ -319,8 +338,9 @@ const init = async () => {
             text: [
               {
                 textContainer: 'TextProgress',
-                message:
-                  '<i class="fas fa-user-circle text-info"></i> <span style="margin-left: 13px">O login é necessario!</span>',
+                message: `<i class="fas fa-user-circle text-info"></i> <span style="margin-left: 13px">${Lang(
+                  'Login is required!',
+                )} </span>`,
               },
             ],
           });
@@ -335,8 +355,9 @@ const init = async () => {
         text: [
           {
             textContainer: 'TextProgress',
-            message:
-              '<i class="fas fa-user-circle text-info"></i> <span style="margin-left: 13px">O login é necessario!</span>',
+            message: `<i class="fas fa-user-circle text-info"></i> <span style="margin-left: 13px">${Lang(
+              'Login is required!',
+            )}</span>`,
           },
         ],
       });
@@ -351,6 +372,7 @@ $(document).ready(() => {
   InterfaceLoad();
   LanguageInit(OpenConfig());
   init();
+  Lang('Login is required!');
 });
 
 ipcRenderer.on('update-download-progress', (event, arg) => {
@@ -368,8 +390,9 @@ ipcRenderer.on('update-download-progress', (event, arg) => {
       text: [
         {
           textContainer: 'TextProgress',
-          message:
-            '<i class="fas fa-file-archive text-success"></i> <strong style="margin-left: 13px">Atualização disponivel, fazendo download! Aguarde...</strong>',
+          message: `<i class="fas fa-file-archive text-success"></i> <strong style="margin-left: 13px">${Lang(
+            'Update available by downloading! Hold...',
+          )}</strong>`,
         },
       ],
     });
@@ -385,8 +408,9 @@ ipcRenderer.on('update-downloaded', (event, arg) => {
       text: [
         {
           textContainer: 'TextProgress',
-          message:
-            '<i class="fas fa-redo-alt text-success"></i> <strong style="margin-left: 13px">Reiniciando para finalizar atualização...</strong>',
+          message: `<i class="fas fa-redo-alt text-success"></i> <strong style="margin-left: 13px">${Lang(
+            'Restarting to finish update...',
+          )}</strong>`,
         },
       ],
     });

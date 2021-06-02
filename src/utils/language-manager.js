@@ -3,12 +3,14 @@ import { AppDefaultPath } from '../utils/application-manager.js';
 
 const languageAvariable = ['pt_BR'];
 var defaultLanguage = '';
+var oldDefaultLanguage = '';
 var languageDataBase = [];
 
 const LanguageInit = (config) => {
   const languageConfig = config['language'];
-  defaultLanguage = languageConfig ? languageConfig : 'en-US';
-
+  oldDefaultLanguage = defaultLanguage;
+  defaultLanguage =
+    languageAvariable.indexOf(languageConfig) > -1 ? languageConfig : 'en_US';
   try {
     languageDataBase =
       languageAvariable.indexOf(defaultLanguage) > -1
@@ -28,4 +30,25 @@ const Lang = (text) => {
     : text;
 };
 
-export { defaultLanguage, languageDataBase, LanguageInit, Lang };
+const LangElement = (element, defaultText, input = false) => {
+  const textElement = input
+    ? document.getElementById(element).placeholder
+    : document.getElementById(element).innerHTML;
+  const textElmenteResolve = textElement
+    .trim()
+    .replace(/(\r\n|\n|\r)/gm, '')
+    .replace(/\s+/g, ' ');
+  if (oldDefaultLanguage == defaultLanguage) return;
+  if (!element || !textElmenteResolve)
+    return input
+      ? (document.getElementById(element).placeholder = defaultText)
+      : (document.getElementById(element).innerHTML = defaultText);
+  const textLanguage =
+    defaultLanguage != 'en_US'
+      ? Lang(languageDataBase[textElmenteResolve])
+      : defaultText;
+  if (input) document.getElementById(element).placeholder = textLanguage;
+  else document.getElementById(element).innerHTML = textLanguage;
+};
+
+export { defaultLanguage, languageDataBase, LanguageInit, Lang, LangElement };

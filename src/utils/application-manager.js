@@ -1,4 +1,5 @@
-var { app, ipcRenderer, shell } = require('electron').remote;
+var { app, shell } = require('electron').remote;
+var { ipcRenderer } = require('electron');
 const remote = require('electron').remote;
 const os = require('os');
 
