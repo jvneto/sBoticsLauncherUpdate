@@ -45,7 +45,7 @@ const LoginClose = () => {
 const IndexOpen = () => {
   var ScreenSize = screen.getPrimaryDisplay();
   ScreenSize = ScreenSize.bounds;
-  const height = Math.round(ScreenSize.height * 0.6);
+  const height = Math.round(ScreenSize.height * 0.8);
   const width = Math.round((16 * height) / 9);
 
   var index = windowManager.createNew(

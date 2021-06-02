@@ -1,4 +1,11 @@
-const { app, BrowserWindow, screen, ipcMain, remote } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  screen,
+  ipcMain,
+  remote,
+  shell,
+} = require('electron');
 const { autoUpdater } = require('electron-updater');
 var windowManager = require('electron-window-manager');
 
@@ -32,7 +39,7 @@ const Load_OpenApplication = (screenSizeCalc) => {
       DevTools: false,
       menu: null,
       frame: false,
-      resizable: false, 
+      resizable: false,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
@@ -56,6 +63,9 @@ ipcMain.on('app-defaultpath', (event) => {
   event.returnValue = __dirname;
 });
 
+ipcMain.on('open-install-folder', (event) => {
+  shell.openPath(`${os.homedir()}/wEduc/sBotics/`);
+});
 
 // AutoUpdater
 ipcMain.on('update-init', (event) => {

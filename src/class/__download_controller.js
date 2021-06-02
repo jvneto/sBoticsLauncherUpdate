@@ -2,6 +2,7 @@ var extend = require('extend-shallow');
 var sBoticsDownloader = require('sbotics-downloader');
 import { FindSync, FileSizeSync, SaveAsync } from '../utils/files-manager.js';
 import { DetecOSFolder } from '../utils/application-manager.js';
+import { Create, Update } from '../utils/progress-bar.js';
 
 const BlackList = [
   'sBotics/sBotics_Data/StreamingAssets/Skybox.json',
@@ -74,6 +75,58 @@ const CheckUpdate = (options) => {
   }
 };
 
+const CheckAllUpdate = (options) => {
+  options = extend(
+    {
+      dataUpdate: '',
+    },
+    options,
+  );
+
+  const dataUpdate = options.dataUpdate;
+  const dataUpdateFilesSize = dataUpdate['data'].length;
+  var filesID = dataUpdateFilesSize + 1;
+  var filesFind = 0;
+  var filesNotFind = 0;
+
+  dataUpdate['data'].map((dataUpdate) => {
+    const fileID = --filesID;
+    Create({
+      percentage: dataUpdateFilesSize,
+      sizeCreate: true,
+      id: fileID,
+      state: 'info',
+      limit: dataUpdateFilesSize,
+    });
+    if (
+      CheckUpdate({
+        path: dataUpdate.path,
+        name: dataUpdate.name,
+        size: dataUpdate.size,
+      })
+    ) {
+      Update({
+        id: fileID,
+        addState: 'sbotics-okfiles',
+        removeState: 'info',
+      });
+      filesFind = filesFind + 1;
+    } else {
+      Update({
+        id: fileID,
+        addState: 'warning',
+        removeState: 'info',
+      });
+      filesNotFind = filesNotFind + 1;
+    }
+  });
+  return {
+    filesFind: filesFind,
+    filesNotFind: filesNotFind,
+    dataUpdateFiles: dataUpdateFilesSize,
+  };
+};
+
 const DownloadsUpdate = (options) => {
   options = extend(
     {
@@ -81,6 +134,7 @@ const DownloadsUpdate = (options) => {
       name: '',
       prefix: '',
       size: '',
+      id: '',
     },
     options,
   );
@@ -89,26 +143,27 @@ const DownloadsUpdate = (options) => {
   const name = options.name;
   const prefix = options.prefix;
   const size = options.size;
+  const id = options.id;
 
   if (!name || !prefix) return 'teste';
 
-  const pathFile = prefix + path + name;
+  const pathFile = (prefix + path + name).replace('#', '%23');
 
   return new Promise((resolve, reject) => {
     if (CheckUpdate({ path: path, name: name, size: size }))
-      return resolve({ state: 'ok' });
+      return resolve({ state: 'ok', id: id });
 
     __sBoticsDownloader.file(
       pathFile,
       { savePath: `sBotics/${path + name}` },
       (err, resp) => {
-        if (err) reject(false);
+        if (err) return reject(false);
         SaveAsync(resp.path, resp.file)
-          .then((resp) => resolve({ state: 'update' }))
-          .catch((err) => reject({ state: 'false' }));
+          .then((resp) => resolve({ state: 'update', id: id }))
+          .catch((err) => reject({ state: false, id: id }));
       },
     );
   });
 };
 
-export { DataUpdate, CheckUpdate, DownloadsUpdate };
+export { DataUpdate, CheckUpdate, CheckAllUpdate, DownloadsUpdate };
