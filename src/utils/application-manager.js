@@ -1,5 +1,6 @@
-var { app, ipcRenderer } = require('electron').remote;
+var { app, ipcRenderer, shell } = require('electron').remote;
 const remote = require('electron').remote;
+const os = require('os');
 
 const SLMP = () => {
   try {
@@ -16,6 +17,10 @@ const SystemGetLocale = () => {
 
 const AppDefaultPath = () => {
   return ipcRenderer.sendSync('app-defaultpath');
+};
+
+const OpenInstallFolder = () => {
+  shell.openPath(`${os.homedir()}/wEduc/sBotics/`);
 };
 
 const AppVersion = () => {
@@ -36,11 +41,25 @@ const DetecOSFolder = () => {
   return platforms[os];
 };
 
+const folderPathGenaral = () => {
+  return `${os.homedir()}/wEduc`;
+};
+const folderPathGLauncher = () => {
+  return `${os.homedir()}/wEduc/Launcher`;
+};
+const folderPathGsBotics = () => {
+  return `${os.homedir()}/wEduc/sBotics`;
+};
+
 export {
   SLMP,
   SystemGetLocale,
   AppDefaultPath,
+  OpenInstallFolder,
   AppVersion,
   DetectOS,
   DetecOSFolder,
+  folderPathGenaral,
+  folderPathGLauncher,
+  folderPathGsBotics,
 };

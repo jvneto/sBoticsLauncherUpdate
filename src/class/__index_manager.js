@@ -5,9 +5,15 @@ import {
   CheckUpdate,
   CheckAllUpdate,
 } from '../class/__download_controller.js';
-import { DetecOSFolder } from '../utils/application-manager.js';
+import {
+  OpenInstallFolder,
+  DetecOSFolder,
+} from '../utils/application-manager.js';
 import { Create, Update, Reset } from '../utils/progress-bar.js';
 import { MagicButton } from '../utils/magic-button-manager.js';
+import { OpenSbotics } from '../utils/open-sbotics.js';
+import { UpdateUserFile } from '../class/__file_user.js';
+import { LoginOpen, IndexClose } from '../utils/window-manager.js';
 
 // Interface Manager
 $('.close-alert').click(function () {
@@ -124,6 +130,7 @@ $(document).ready(() => {
   InterfaceLoad();
   FilesVerification();
 });
+
 $(document).on('click', '#MagicButtonClick', () => {
   const mode = $('#MagicButtonClick').data('mode');
   const state = $('#MagicButtonClick').data('state');
@@ -139,8 +146,32 @@ $(document).on('click', '#MagicButtonClick', () => {
       DonwnloadsBotics('Atualizando o sBotics! Aguarde...');
       break;
     case 'start':
+      OpenSbotics();
       break;
     default:
       break;
   }
+});
+
+import { LinkOpen } from '../utils/window-manager.js';
+
+$(document).on('click', '#cBoticsButton', () => {
+  LinkOpen('https://cbotics.weduc.natalnet.br/', 'cBotics');
+});
+
+$(document).on('click', '#TutorialButton', () => {
+  LinkOpen(
+    'https://sbotics.github.io/tutorial/content/index.html',
+    'sBotics Tutorial',
+  );
+});
+
+$(document).on('click', '#UserSettings', () => {
+  UpdateUserFile({ data: { accessToken: '', logged: false } });
+  LoginOpen();
+  IndexClose();
+});
+
+$(document).on('click', '#OpenFolderInstall', () => {
+  OpenInstallFolder();
 });

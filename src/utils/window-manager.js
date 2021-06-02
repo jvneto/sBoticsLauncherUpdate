@@ -72,6 +72,10 @@ const IndexOpen = () => {
   index.open();
 };
 
+const IndexClose = () => {
+  windowManager.close('index');
+};
+
 const LinkOpen = (url, pageName = 'sBotics Launcher') => {
   var ScreenSize = screen.getPrimaryDisplay();
   ScreenSize = ScreenSize.bounds;
@@ -97,4 +101,4 @@ const LinkOpen = (url, pageName = 'sBotics Launcher') => {
   link.open();
 };
 
-export { LoadClose, LoginOpen, LoginClose, IndexOpen, LinkOpen };
+export { LoadClose, LoginOpen, LoginClose, IndexOpen, IndexClose, LinkOpen };

@@ -41,19 +41,30 @@
               <img class="menu-logo" src="../assets/zul/feliz.png" />
             </a>
           </li>
+
           <li>
-            <a id="cboticsButton" class="d-block" href="#">
+            <a id="TutorialButton" class="d-block">
+              <img class="menu-icons" src="../assets/icons/book.png" />
+            </a>
+          </li>
+
+          <li>
+            <a id="cBoticsButton" class="d-block">
               <img class="menu-icons" src="../assets/icons/cBotics.png" />
             </a>
           </li>
         </ul>
         <ul class="bot">
           <li>
-            <a id="tutorial" class="d-block" href="#">
-              <img class="menu-icons" src="../assets/icons/book.png" />
+            <a id="UserSettings" class="d-block">
+              <img
+                class="menu-icons"
+                style="border-radius: 50%"
+                src="https://ui-avatars.com//api//?name=Julio+Cesar+Vera+Neto&color=7F9CF5&background=EBF4FF"
+              />
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a
               id="settings"
               class="d-block"
@@ -61,7 +72,7 @@
             >
               <img class="menu-icons" src="../assets/icons/config.png" />
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
 
@@ -157,9 +168,9 @@
                 <div class="line"></div>
                 <span id="Or">OU</span>
               </div>
-              <button class="btn btn-outline-secondary w-100" id="OpenFolder">
-                <i class="fas fa-folder-open mr-2"></i> Abrir pasta de
-                instalação
+              <button id="OpenFolderInstall" class="w-100 btn btn-outline-secondary MagicButtonCenter">
+                <i class="fas fa-folder-open iconMagicButton"></i>
+                <span class="textoMagicButton">Abrir pasta de instalação</span>
               </button>
             </div>
           </div>
@@ -195,16 +206,10 @@
           </div>
         </div>
       </div>
-
-      <div class="col-right" id="cbotics" style="display: none; height: 100%">
-        <iframe
-          src="https://cbotics.weduc.natalnet.br/"
-          style="height: 100%; display: block; width: 100%; border: none"
-        ></iframe>
-      </div>
     </div>
 
     <!-- Scripts Init -->
+    <script src="../src/utils/env.js"></script>
     <script type="module" src="../src/class/__index_manager.js"></script>
   </body>
 </html>
