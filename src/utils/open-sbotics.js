@@ -4,9 +4,11 @@ import {
 } from '../utils/application-manager.js';
 import { OpenConfig } from '../class/__file_config.js';
 import { OpenUserFile } from '../class/__file_user.js';
+import { IndexClose } from '../utils/window-manager.js';
 const path = require('path');
 const url = require('url');
 var child = require('child_process').spawn;
+const fs = require('fs-extra');
 
 const OpenSbotics = () => {
   var string_execute;
@@ -45,7 +47,13 @@ const OpenSbotics = () => {
     );
   }
   var executablePath = string_execute;
-  var parameters = ['--lang', fileConfig['languageSimulator'], '--auth_token', fileUser['accessToken']];
+  var parameters = [
+    '--lang',
+    fileConfig['languageSimulator'],
+    '--auth_token',
+    fileUser['accessToken'],
+  ];
   child(executablePath, parameters, { detached: true });
+  IndexClose();
 };
 export { OpenSbotics };

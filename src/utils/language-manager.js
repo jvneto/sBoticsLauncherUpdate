@@ -40,7 +40,9 @@ const LangElement = (element, defaultText, input = false) => {
     .trim()
     .replace(/(\r\n|\n|\r)/gm, '')
     .replace(/\s+/g, ' ');
-  if (oldDefaultLanguage == defaultLanguage) return;
+
+  // console.log(textElmenteResolve);
+  // if (oldDefaultLanguage == defaultLanguage) return;
   if (!element || !textElmenteResolve)
     return input
       ? (document.getElementById(element).placeholder = defaultText)

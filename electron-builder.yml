@@ -1,4 +1,19 @@
-appId: com.Natalnet.sBotics
+productName: "sBotics"
+appId: "com.Natalnet.sBotics"
+
+asar: true
+
+mac:
+  icon: "icons/icon.icns"
+
+linux:
+  category: Education
+  target: "AppImage"
+  icon: "512x512.png"
+
+win:
+  icon: "icons/icon.ico"
+  target: "nsis"
+
 publish:
   provider: github
-  token: [Token Here]

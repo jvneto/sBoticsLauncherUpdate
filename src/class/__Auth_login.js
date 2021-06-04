@@ -51,7 +51,7 @@ $(document).on('input', '#UserPassword', () => {
   if (userPassword.value) {
     MessageLabel({
       element: userPassword,
-      label: document.getElementById('UserPasswordLabel'),
+      label: document.getElementById('UserPasswordLabell'),
       remove: 'is-invalid',
       remove_2: 'input',
       add: 'is-valid',
@@ -59,7 +59,7 @@ $(document).on('input', '#UserPassword', () => {
   } else
     MessageLabel({
       element: userPassword,
-      label: document.getElementById('UserPasswordLabel'),
+      label: document.getElementById('UserPasswordLabell'),
       remove: 'is-valid',
       add: 'input',
     });
@@ -88,7 +88,7 @@ authFormLogin.addEventListener('submit', (e) => {
   const userEmailLabel = document.getElementById('UserEmailLabel');
   const userPassword = document.getElementById('UserPassword');
   const userPasswordValue = userPassword.value;
-  const userPasswordLabel = document.getElementById('UserPasswordLabel');
+  const userPasswordLabel = document.getElementById('UserPasswordLabell');
   if (userEmailValue && userPasswordValue) {
     const email = Email(userEmailValue);
     const pass = Password({ pass: userPasswordValue });
@@ -133,8 +133,8 @@ authFormLogin.addEventListener('submit', (e) => {
                 return;
               }
 
-              LoginClose();
               IndexOpen();
+              LoginClose();
             })
             .catch((err) => {
               CreateTopAlert({
@@ -146,7 +146,10 @@ authFormLogin.addEventListener('submit', (e) => {
                 ),
               });
               MessageLabel({ element: userEmail, label: userEmailLabel });
-              MessageLabel({ element: userPassword, label: userPasswordLabel });
+              MessageLabel({
+                element: userPassword,
+                label: UserPasswordLabell,
+              });
             });
         })
         .catch(function (error) {
@@ -158,7 +161,7 @@ authFormLogin.addEventListener('submit', (e) => {
             message: Lang('These credentials were not found in our records.'),
           });
           MessageLabel({ element: userEmail, label: userEmailLabel });
-          MessageLabel({ element: userPassword, label: userPasswordLabel });
+          MessageLabel({ element: userPassword, label: UserPasswordLabell });
         });
     } else {
       if (!email)

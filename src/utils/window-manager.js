@@ -1,6 +1,7 @@
 var remote = require('electron').remote;
 var { screen } = remote;
 var windowManager = remote.require('electron-window-manager');
+import { DetectOS } from '../utils/application-manager.js';
 
 var GlobalShowDevTools = false;
 
@@ -25,7 +26,7 @@ const LoginOpen = () => {
       showDevTools: GlobalShowDevTools,
       DevTools: GlobalShowDevTools,
       menu: null,
-      frame: false,
+      frame: DetectOS() == 'darwin',
       resizable: false,
       webPreferences: {
         nodeIntegration: true,
@@ -42,13 +43,14 @@ const LoginClose = () => {
   windowManager.close('login');
 };
 
-const IndexOpen = () => {
+var index;
+const IndexOpen = (restart = false) => {
   var ScreenSize = screen.getPrimaryDisplay();
   ScreenSize = ScreenSize.bounds;
   const height = Math.round(ScreenSize.height * 0.8);
   const width = Math.round((16 * height) / 9);
 
-  var index = windowManager.createNew(
+  index = windowManager.createNew(
     'index',
     'sBotics Launcher',
     'file://' + __dirname + '/index.html',
@@ -74,6 +76,9 @@ const IndexOpen = () => {
 
 const IndexClose = () => {
   windowManager.close('index');
+};
+const IndexReload = () => {
+  document.location.reload(true);
 };
 
 const LinkOpen = (url, pageName = 'sBotics Launcher') => {
@@ -101,4 +106,12 @@ const LinkOpen = (url, pageName = 'sBotics Launcher') => {
   link.open();
 };
 
-export { LoadClose, LoginOpen, LoginClose, IndexOpen, IndexClose, LinkOpen };
+export {
+  LoadClose,
+  LoginOpen,
+  LoginClose,
+  IndexOpen,
+  IndexClose,
+  IndexReload,
+  LinkOpen,
+};
